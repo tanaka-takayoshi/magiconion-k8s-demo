@@ -6,7 +6,7 @@ EXPOSE 12345
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS publish
 WORKDIR /src
 COPY . .
-RUN dotnet publish MagicOnion.Server.csproj -c Release -o /app
+RUN dotnet publish MagicOnion.Server/MagicOnion.Server.csproj -c Release -o /app
 
 FROM base As final
 WORKDIR /app
