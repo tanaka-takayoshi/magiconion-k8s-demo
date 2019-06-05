@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: magiconion
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: magiconion
+    spec:
+      containers:
+      - name: magiconion
+        image: tanakatakayoshi/magiconion-server-example:latest
+        ports:
+        - containerPort: 12345
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: magiconion-svc
+spec:
+  ports:
+  - name: magiconion
+    port: 12345
+  selector:
+    app: magiconion
+  type: LoadBalancer

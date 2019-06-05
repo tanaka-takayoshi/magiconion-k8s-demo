@@ -1,11 +1,8 @@
-// Server implementation
-// implements : StreamingHubBase<THub, TReceiver>, THub
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MagicOnion.Server.Hubs;
-using NewRelic.Api.Agent;
 
 namespace MagicOnion.Server
 {
@@ -35,7 +32,6 @@ namespace MagicOnion.Server
             Broadcast(room).OnLeave(self);
         }
 
-        [Transaction]
         public async Task MoveAsync(double position, double rotation)
         {
             if (position < 0)
@@ -48,7 +44,6 @@ namespace MagicOnion.Server
             Broadcast(room).OnMove(self);
         }
 
-        [Transaction]
         // You can hook OnConnecting/OnDisconnected by override.
         protected override ValueTask OnDisconnected()
         {

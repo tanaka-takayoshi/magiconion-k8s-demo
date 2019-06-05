@@ -2,7 +2,6 @@ using Grpc.Core;
 using MagicOnion;
 using System;
 using System.Net.Http;
-using NewRelic.Api.Agent;
 using System.Threading.Tasks;
 
 namespace MagicOnion.Server
