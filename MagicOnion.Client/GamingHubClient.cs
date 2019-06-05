@@ -54,17 +54,17 @@ namespace MagicOnion.Client
     
         void IGamingHubReceiver.OnJoin(Player player)
         {
-            Console.WriteLine($"plaer:{player.Name} joined");
+            Console.WriteLine($"player:{player.Name} joined");
         }
     
         void IGamingHubReceiver.OnLeave(Player player)
         {
-            Console.WriteLine($"plaer:{player.Name} left");
+            Console.WriteLine($"player:{player.Name} left");
         }
     
         void IGamingHubReceiver.OnMove(Player player)
         {
-            Console.WriteLine($"plaer:{player.Name} moved to {player.Position} {player.Rotation}");
+            Console.WriteLine($"player:{player.Name} moved to {player.Position} {player.Rotation}");
         }
     }
 }

@@ -18,6 +18,7 @@ namespace MagicOnion.Client
         {
             var host = Environment.GetEnvironmentVariable("GRPC_HOST") ?? "localhost";
             int.TryParse(Environment.GetEnvironmentVariable("GRPC_PORT") ?? "12345", out var port);
+            int.TryParse(Environment.GetEnvironmentVariable("TURNS") ?? "1", out var turns);
             var channel = new Channel(host, port, ChannelCredentials.Insecure);
             
             var client = MagicOnionClient.Create<IMyFirstService>(channel);
@@ -26,7 +27,7 @@ namespace MagicOnion.Client
             var result = await client.SumAsync(100, 200);
             Console.WriteLine("Client Received:" + result);
 
-            while (true)
+            for (int i = 0; i < turns; i++)
             {
                 var tasks = Enumerable.Range(1,100)
                 .Select(id => Emulate(channel, id))
